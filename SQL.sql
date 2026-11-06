@@ -230,12 +230,94 @@ INSERT INTO categories (category_name, description) VALUES
 
 INSERT INTO food_items
 (category_id, food_name, description, price, image, availability)
-VALUES
-(1, 'Chicken Rice', 'Delicious chicken fried rice', 850.00, 'chicken_rice.jpg', 'available'),
-(1, 'Vegetable Rice', 'Fresh vegetable fried rice', 650.00, 'vegetable_rice.jpg', 'available'),
-(2, 'Chicken Pizza', 'Chicken pizza with cheese', 1500.00, 'chicken_pizza.jpg', 'available'),
-(3, 'Cheese Burger', 'Burger with cheese and vegetables', 750.00, 'cheese_burger.jpg', 'available'),
-(4, 'Orange Juice', 'Fresh orange juice', 350.00, 'orange_juice.jpg', 'available'),
-(5, 'Chocolate Cake', 'Delicious chocolate cake', 500.00, 'chocolate_cake.jpg', 'available');
+
+SELECT
+    c.category_id,
+    f.food_name,
+    f.description,
+    f.price,
+    f.image,
+    'available'
+
+FROM
+(
+    SELECT 'Rice' AS category_name, 'Chicken Rice' AS food_name, 'Delicious chicken fried rice' AS description, 850.00 AS price, 'chicken_rice.jpg' AS image
+    UNION ALL
+    SELECT 'Rice', 'Vegetable Rice', 'Fresh vegetable fried rice', 650.00, 'vegetable_rice.jpg'
+    UNION ALL
+    SELECT 'Rice', 'Chicken Biryani', 'Spicy chicken biryani rice', 1200.00, 'chicken_biryani.jpg'
+    UNION ALL
+    SELECT 'Rice', 'Seafood Fried Rice', 'Fried rice with fresh seafood', 1100.00, 'seafood_rice.jpg'
+    UNION ALL
+    SELECT 'Rice', 'Nasi Goreng', 'Traditional Indonesian fried rice', 1000.00, 'nasi_goreng.jpg'
+    UNION ALL
+    SELECT 'Rice', 'Egg Fried Rice', 'Fried rice with fresh eggs', 750.00, 'egg_rice.jpg'
+
+    UNION ALL
+    SELECT 'Pizza', 'Chicken Pizza', 'Chicken pizza with cheese', 1500.00, 'chicken_pizza.jpg'
+    UNION ALL
+    SELECT 'Pizza', 'Cheese Pizza', 'Delicious pizza with extra cheese', 1200.00, 'cheese_pizza.jpg'
+    UNION ALL
+    SELECT 'Pizza', 'Pepperoni Pizza', 'Pizza topped with pepperoni', 1600.00, 'pepperoni_pizza.jpg'
+    UNION ALL
+    SELECT 'Pizza', 'Vegetable Pizza', 'Pizza with fresh vegetables', 1100.00, 'vegetable_pizza.jpg'
+    UNION ALL
+    SELECT 'Pizza', 'BBQ Chicken Pizza', 'BBQ chicken pizza with cheese', 1700.00, 'bbq_pizza.jpg'
+
+    UNION ALL
+    SELECT 'Burgers', 'Cheese Burger', 'Burger with cheese and vegetables', 750.00, 'cheese_burger.jpg'
+    UNION ALL
+    SELECT 'Burgers', 'Double Cheese Burger', 'Double beef burger with cheese', 1100.00, 'double_burger.jpg'
+    UNION ALL
+    SELECT 'Burgers', 'Crispy Chicken Burger', 'Crispy chicken burger', 950.00, 'crispy_burger.jpg'
+    UNION ALL
+    SELECT 'Burgers', 'Veggie Burger', 'Healthy burger with fresh vegetables', 700.00, 'veggie_burger.jpg'
+    UNION ALL
+    SELECT 'Burgers', 'Fish Burger', 'Burger with crispy fish', 900.00, 'fish_burger.jpg'
+
+    UNION ALL
+    SELECT 'Beverages', 'Orange Juice', 'Fresh orange juice', 350.00, 'orange_juice.jpg'
+    UNION ALL
+    SELECT 'Beverages', 'Mango Juice', 'Fresh mango juice', 400.00, 'mango_juice.jpg'
+    UNION ALL
+    SELECT 'Beverages', 'Watermelon Juice', 'Fresh watermelon juice', 350.00, 'watermelon_juice.jpg'
+    UNION ALL
+    SELECT 'Beverages', 'Iced Coffee', 'Cold and refreshing iced coffee', 450.00, 'iced_coffee.jpg'
+    UNION ALL
+    SELECT 'Beverages', 'Chocolate Milkshake', 'Creamy chocolate milkshake', 550.00, 'chocolate_milkshake.jpg'
+
+    UNION ALL
+    SELECT 'Desserts', 'Chocolate Cake', 'Delicious chocolate cake', 500.00, 'chocolate_cake.jpg'
+    UNION ALL
+    SELECT 'Desserts', 'Cheesecake', 'Creamy strawberry cheesecake', 650.00, 'cheesecake.jpg'
+    UNION ALL
+    SELECT 'Desserts', 'Chocolate Ice Cream', 'Delicious chocolate ice cream', 400.00, 'chocolate_icecream.jpg'
+    UNION ALL
+    SELECT 'Desserts', 'Chocolate Brownie', 'Soft and tasty chocolate brownie', 500.00, 'brownie.jpg'
+    UNION ALL
+    SELECT 'Desserts', 'Chocolate Donut', 'Fresh donut with chocolate topping', 300.00, 'donut.jpg'
+
+    UNION ALL
+    SELECT 'Short Eats', 'French Fries', 'Crispy golden french fries', 450.00, 'french_fries.jpg'
+    UNION ALL
+    SELECT 'Short Eats', 'Chicken Nuggets', 'Crispy chicken nuggets', 600.00, 'chicken_nuggets.jpg'
+    UNION ALL
+    SELECT 'Short Eats', 'Chicken Wings', 'Spicy crispy chicken wings', 750.00, 'chicken_wings.jpg'
+    UNION ALL
+    SELECT 'Short Eats', 'Club Sandwich', 'Sandwich with chicken and vegetables', 650.00, 'club_sandwich.jpg'
+
+) AS f
+
+JOIN categories c
+ON c.category_name = f.category_name
+
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM food_items old
+    WHERE old.food_name = f.food_name
+);
 
 
+-- =========================================
+-- END OF DATABASE
+-- =========================================
