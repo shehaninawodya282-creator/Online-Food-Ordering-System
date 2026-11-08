@@ -82,7 +82,7 @@ $grandTotal = $subtotal + $deliveryFee;
                                         </div>
                                     </div>
                                 </td>
-                                <td>Rs.<?php echo number_format($item['price'], 2); ?></td>
+                                <td>$<?php echo number_format($item['price'], 2); ?></td>
                                 <td>
                                     <div class="qty-control">
                                         <button class="qty-btn" onclick="changeQuantity(<?php echo $item['cart_item_id']; ?>, <?php echo $item['quantity'] - 1; ?>)">-</button>
@@ -90,7 +90,7 @@ $grandTotal = $subtotal + $deliveryFee;
                                         <button class="qty-btn" onclick="changeQuantity(<?php echo $item['cart_item_id']; ?>, <?php echo $item['quantity'] + 1; ?>)">+</button>
                                     </div>
                                 </td>
-                                <td><strong>Rs.<?php echo number_format($lineTotal, 2); ?></strong></td>
+                                <td><strong>$<?php echo number_format($lineTotal, 2); ?></strong></td>
                                 <td>
                                     <button onclick="removeCartItem(<?php echo $item['cart_item_id']; ?>)" class="btn btn-outline btn-sm text-danger" title="Remove Item">
                                         <i class="fa-solid fa-trash-can"></i>
@@ -111,15 +111,15 @@ $grandTotal = $subtotal + $deliveryFee;
                     <h3>Order Summary</h3>
                     <div class="summary-row">
                         <span>Items Subtotal:</span>
-                        <span>Rs.<?php echo number_format($subtotal, 2); ?></span>
+                        <span>$<?php echo number_format($subtotal, 2); ?></span>
                     </div>
                     <div class="summary-row">
                         <span>Delivery Fee:</span>
-                        <span>Rs.<?php echo number_format($deliveryFee, 2); ?></span>
+                        <span>$<?php echo number_format($deliveryFee, 2); ?></span>
                     </div>
                     <div class="summary-row total">
                         <span>Grand Total:</span>
-                        <span>Rs.<?php echo number_format($grandTotal, 2); ?></span>
+                        <span>$<?php echo number_format($grandTotal, 2); ?></span>
                     </div>
 
                     <a href="checkout.php" class="btn btn-primary btn-block" style="margin-top: 25px; padding: 14px;">
