@@ -1,8 +1,8 @@
 
--- =========================================
+
 -- ONLINE FOOD ORDERING SYSTEM
 -- Database: online_food_ordering_system
--- =========================================
+
 
 CREATE DATABASE IF NOT EXISTS online_food_ordering_system;
 
@@ -318,6 +318,6 @@ WHERE NOT EXISTS (
 );
 
 
--- =========================================
--- END OF DATABASE
--- =========================================
+
+
+
