@@ -1,9 +1,8 @@
--- =========================================
+
 -- OPTIONAL SEED ADMIN ACCOUNT
 -- Run this if you want a ready-to-use Admin Account
 -- Email: admin@quickbite.com
 -- Password: admin123
--- =========================================
 
 USE online_food_ordering_system;
 
